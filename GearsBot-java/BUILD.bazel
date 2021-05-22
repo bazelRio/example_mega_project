@@ -1,0 +1,20 @@
+load("@wpi_bazel_deps//rules:wpilibj_robot.bzl", "wpilibj_robot")
+
+MAIN_CLASS = "frc.robot.Main"
+
+halsim_projects_info = {}
+
+halsim_projects_info["gui"] = ["@local_allwpilib//:halsim_gui"]
+
+halsim_projects_info["ws_server"] = ["@local_allwpilib//:halsim_ws_server"]
+
+wpilibj_robot(
+    name = "GearsBot-java",
+    halsim_projects_info = halsim_projects_info,
+    main_class = MAIN_CLASS,
+
+    # TODO move to vendor props
+    non_wpi_deps = [
+        "@local_allwpilib//:wpilibNewCommands-java",
+    ],
+)

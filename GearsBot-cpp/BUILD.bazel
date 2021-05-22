@@ -1,0 +1,17 @@
+load("@wpi_bazel_deps//rules:wpilibc_robot.bzl", "wpilibc_robot")
+
+halsim_projects_info = {}
+
+halsim_projects_info["gui"] = ["@local_allwpilib//:halsim_gui"]
+
+halsim_projects_info["ws_server"] = ["@local_allwpilib//:halsim_ws_server"]
+
+wpilibc_robot(
+    name = "GearsBot-cpp",
+    halsim_projects_info = halsim_projects_info,
+
+    # TODO move to vendor props
+    non_wpi_deps = [
+        "@local_allwpilib//:wpilibNewCommands-cpp",
+    ],
+)
